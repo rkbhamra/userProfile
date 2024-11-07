@@ -1,0 +1,21 @@
+{
+    "netbeans.jdkhome": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot",
+    "netbeans.project.jdkhome": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot",
+    "java.jdt.ls.java.home": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-11",
+            "path": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot"
+        }
+    ],
+    "terminal.integrated.env.windows": {
+        "JAVA_HOME": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot",
+        "PATH": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot\\bin;${env:PATH}"
+    },
+    "maven.terminal.customEnv": [
+        {
+            "environmentVariable": "JAVA_HOME",
+            "value": "c:\\Program Files\\Eclipse Foundation\\jdk-11.0.12.7-hotspot"
+        }
+    ]
+}
