@@ -2,18 +2,21 @@ if  (process.env.NODE_ENV !== 'production' ){
   require('dotenv').config();
 }
 
-
 const express = require('express');
 const app = express();
 const espressLayouts = require('express-ejs-layouts');
 
 const indexRouter = require('./routes/index');
+const methodOverride = require('method-override');
+const userRouter = require('./routes/user');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
 app.use(espressLayouts);
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
+app.use('/', userRouter);
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, {
