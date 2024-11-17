@@ -1,79 +1,92 @@
-    <div class="contact-info-container">
-        <h1>Update Your Contact Information</h1>
+<div class="contact-info-container">
+    <h1>Update Your Contact Information</h1>
 
-        <!-- Display current information -->
-        <div class="current-info">
-            <h2>Current Information:</h2>
-            <p><strong>Name:</strong> <%= user.UserName %></p>
-            <p><strong>Email:</strong> <%= user.UserEmail %></p>
-            <p><strong>Phone:</strong> <%= user.UserPhone %></p>
-            <p><strong>Address:</strong> <%= user.UserAddress %></p>
-        </div>
-
-        <!-- Edit form -->
-        <div class="edit-contact-form">
-            <h2>Edit Contact Information</h2>
-            <form action="/contactinfo/update" method="POST">
-                <div class="form-group">
-                    <label for="UserName">Name:</label>
-                    <input type="text" id="UserName" name="UserName" value="<%= user.UserName %>" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="UserEmail">Email:</label>
-                    <input type="email" id="UserEmail" name="UserEmail" value="<%= user.UserEmail %>" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="UserPhone">Phone:</label>
-                    <input type="text" id="UserPhone" name="UserPhone" value="<%= user.UserPhone %>">
-                </div>
-
-                <div class="form-group">
-                    <label for="UserAddress">Address:</label>
-                    <input type="text" id="UserAddress" name="UserAddress" value="<%= user.UserAddress %>">
-                </div>
-
-                <button type="submit">Save Changes</button>
-            </form>
-        </div>
+    <div class="current-info-box">
+        <h2>Current Information:</h2>
+        <p><strong>Name:</strong> <%= user.UserName %></p>
+        <p><strong>Email:</strong> <%= user.UserEmail %></p>
+        <p><strong>Phone:</strong> <%= user.UserPhone %></p>
+        <p><strong>Address:</strong> <%= user.UserAddress %></p>
     </div>
 
-    <style>
-        .contact-info-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    <!-- Edit form -->
+    <div class="edit-contact-form">
+        <h2>Edit Contact Information</h2>
+        <form action="/contactInfo/update" method="POST">
+            <input type="hidden" name="userId" value="<%= user._id %>">
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+            <div class="form-group">
+                <label for="UserName">Name:</label>
+                <input type="text" id="UserName" name="UserName" value="<%= user.UserName %>" required>
+            </div>
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
+            <div class="form-group">
+                <label for="UserEmail">Email:</label>
+                <input type="email" id="UserEmail" name="UserEmail" value="<%= user.UserEmail %>" required>
+            </div>
 
-        .form-group input {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+            <div class="form-group">
+                <label for="UserPhone">Phone:</label>
+                <input type="text" id="UserPhone" name="UserPhone" value="<%= user.UserPhone %>">
+            </div>
 
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+            <div class="form-group">
+                <label for="UserAddress">Address:</label>
+                <input type="text" id="UserAddress" name="UserAddress" value="<%= user.UserAddress %>">
+            </div>
 
-        h1, h2 {
-            color: #333;
-        }
-    </style>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    .contact-info-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .current-info-box {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        background-color: #f9f9f9;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    h1, h2 {
+        color: #333;
+    }
+</style>
 </body>
 </html>
