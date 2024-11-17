@@ -8,7 +8,7 @@ const espressLayouts = require('express-ejs-layouts');
 
 const indexRouter = require('./routes/index');
 const methodOverride = require('method-override');
-const userRouter = require('./routes/user');
+const userRouter = require('./routes/index');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
