@@ -12,4 +12,3 @@ The Support System (Sub-project 3) logs user activity in their profile for seaml
 
 To go to the user contact page, the url would be /contactInfo/_id 
 The _id is provided by MongoDB and automatically generated, this is done to ensure each user has their own contact.
-The Support System (Sub-project 3) logs user activity in their profile for seamless tracking of inquiries and ticket status.
