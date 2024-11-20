@@ -5,19 +5,19 @@ const FleetSchema = new mongoose.Schema({
     fleetSize: { type: Number, required: true },
     vehicles: [
         {
-           
+
             plateNumber: { 
             type: String, 
             required: true },
-           
+
             make: { 
             type: String, 
             required: true },
-            
+
             model: { 
             type: String, 
             required: true },
-            
+
             year: { 
             type: Number, 
             required: true },

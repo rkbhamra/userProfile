@@ -1,0 +1,30 @@
+<h2>Add New Payment Method</h2>
+
+<form action="/purchasepref/add" method="POST">
+  <div>
+    <label for="cardholderName">Cardholder Name:</label>
+    <input type="text" id="cardholderName" name="cardholderName" required>
+  </div>
+
+  <div>
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" name="cardNumber" required>
+  </div>
+
+  <div>
+    <label for="expirationMonth">Expiration Month:</label>
+    <input type="number" id="expirationMonth" name="expirationMonth" min="1" max="12" required>
+  </div>
+
+  <div>
+    <label for="expirationYear">Expiration Year:</label>
+    <input type="number" id="expirationYear" name="expirationYear" min="2024" required>
+  </div>
+
+  <div>
+    <label for="cvv">CVV:</label>
+    <input type="number" id="cvv" name="cvv" required>
+  </div>
+
+  <button type="submit">Add Payment Method</button>
+</form> 
