@@ -11,6 +11,14 @@
     </thead>
     <tbody>
         
-        <!-- Rows of purchase history will go here -->
+        <% for (let i = 0; i < purchaseHistory.length; i++) { %>
+            <tr>
+                <td><%= purchaseHistory[i].purchase_id %></td>
+                <td><%= purchaseHistory[i].user_id %></td>
+                <td><%= purchaseHistory[i].product_id %></td>
+                <td><%= purchaseHistory[i].quantity %></td>
+                <td><%= purchaseHistory[i].purchase_date %></td>
+            </tr>
+        <% } %>
     </tbody>
 </table>

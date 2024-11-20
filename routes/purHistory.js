@@ -1,22 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const Fleet = require('../models/fleet');
+const PurchaseHistory = require('../models/buyHistory'); // Correct import
 
-// Debug logging
-console.log('Fleet routes loading...');
-
-// GET route to display the fleet size form
+// GET route to display purchase history
 router.get('/', async (req, res) => {
     try {
-        const tempUserId = '65f3c5d1e214e123456789ab';
-        res.render('purchaseHistory/purHistory')
-    }  catch (error) {
-        console.error('Error fetching fleet:', error);
+        // Fetch purchase history from the database
+        const purchaseHistory = await PurchaseHistory.find();
+
+        // Render the EJS template and pass the data
         res.render('purchaseHistory/purHistory', {
+            purchaseHistory, 
+            layout: 'layouts/layout' 
+        });
+    } catch (error) {
+        console.error('Error fetching purchase history:', error);
+
+        // Render the page with an empty array if an error occurs
+        res.render('purchaseHistory/purHistory', {
+            purchaseHistory: [],
             layout: 'layouts/layout'
         });
     }
 });
-
 
 module.exports = router;
