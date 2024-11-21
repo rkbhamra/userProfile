@@ -6,6 +6,8 @@ const express = require('express');
 const app = express();
 const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const purchaseRouter = require('./routes/purchasePref');
@@ -20,6 +22,14 @@ app.use(expressLayouts);
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(
+  session({
+      secret: 'your-secret-key', 
+      resave: false,
+      saveUninitialized: true,
+  })
+);
 
 app.use('/purchasePref', purchaseRouter);
 app.use('/', indexRouter);
