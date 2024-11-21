@@ -3,7 +3,7 @@ const router = express.Router();
 const CreditCard = require('../models/creditCard');
 
 // Show main page with form and existing cards
-router.get('/index', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const creditCards = await CreditCard.find();
         res.render('purchasePref/index', { 
