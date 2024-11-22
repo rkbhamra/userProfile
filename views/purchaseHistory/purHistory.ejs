@@ -1,0 +1,24 @@
+<h2>Purchase History</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Purchase ID</th>
+            <th>User ID</th>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Purchase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <% for (let i = 0; i < purchaseHistory.length; i++) { %>
+            <tr>
+                <td><%= purchaseHistory[i].purchase_id %></td>
+                <td><%= purchaseHistory[i].user_id %></td>
+                <td><%= purchaseHistory[i].plateNumber %></td>
+                <td><%= purchaseHistory[i].quantity %></td>
+                <td><%= purchaseHistory[i].purchase_date %></td>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
