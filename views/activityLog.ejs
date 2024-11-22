@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Account Activity</h1>
+      
+<% if (activityLogs && activityLogs.length > 0) { %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>Points</th>
+                <th>Activity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% activityLogs.forEach((reward, index) => { %>
+                <tr>
+                    <td><%= index === activityLogs.length - 1 ? 'Redeemed' : 'Added' %></td>
+                    <td><%= reward.points_reward %></td>
+                    <td><%= reward.name %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+<% } else { %>
+    <p>No rewards available.</p>
+<% } %>
+
+</div>
