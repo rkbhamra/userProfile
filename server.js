@@ -14,6 +14,8 @@ const purchaseRouter = require('./routes/purchasePref');
 const contactInfoRouter = require('./routes/contactInfo');
 const fleetRouter = require('./routes/fleets');
 const purHistoryRouter = require('./routes/purHistory');
+const totalRewardsRouter = require('./routes/totalRewards');
+const activityLogRouter = require('./routes/activityLog');
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -35,6 +37,8 @@ app.use('/purchasePref', purchaseRouter);
 app.use('/', indexRouter);
 app.use('/fleetsize', fleetRouter);
 app.use('/purchaseHistory', purHistoryRouter);
+app.use('/totalRewards', totalRewardsRouter);
+app.use('/activityLog', activityLogRouter);
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL, {
