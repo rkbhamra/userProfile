@@ -5,7 +5,16 @@ const Fleet = require('../models/fleet');
 // Debug logging
 console.log('Fleet routes loading...');
 
-// GET route to display the fleet size form
+/**
+ * @api {get} / Get Fleet Size Form
+ * @apiName GetFleetSizeForm
+ * @apiGroup Fleet
+ *
+ * @apiSuccess {String} layout The layout being rendered.
+ * @apiSuccess {Array} vehicles Array of vehicles in the fleet.
+ * @apiSuccess {Number} fleetSize The size of the fleet.
+ * @apiSuccess {String|null} error Any error message to be displayed.
+ */
 router.get('/', async (req, res) => {
     try {
         const tempUserId = '65f3c5d1e214e123456789ab';
@@ -27,16 +36,27 @@ router.get('/', async (req, res) => {
     }
 });
 
-// POST route to handle form submission
+/**
+ * @api {post} / Add Vehicle to Fleet
+ * @apiName AddVehicle
+ * @apiGroup Fleet
+ *
+ * @apiBody {String} plateNumber Vehicle's plate number.
+ * @apiBody {String} make Vehicle's make.
+ * @apiBody {String} model Vehicle's model.
+ * @apiBody {Number} year Vehicle's year.
+ *
+ * @apiSuccess {String} redirect Redirection URL after successful addition.
+ * @apiError {String} error Error message if fleet size limit is reached.
+ */
 router.post('/', async (req, res) => {
     console.log('POST /fleetsize route hit');
     try {
         const { plateNumber, make, model, year } = req.body;
         const tempUserId = '65f3c5d1e214e123456789ab';
-        
-        // Find existing fleet for user or create new one
+
         let fleet = await Fleet.findOne({ userId: tempUserId });
-        
+
         if (!fleet) {
             fleet = new Fleet({
                 userId: tempUserId,
@@ -45,7 +65,6 @@ router.post('/', async (req, res) => {
             });
         }
 
-        // Check if fleet size limit is reached
         if (fleet.vehicles.length >= 5) {
             return res.render('fleet/fleetsize', {
                 layout: 'layouts/layout',
@@ -60,9 +79,9 @@ router.post('/', async (req, res) => {
             model,
             year: parseInt(year)
         });
-        
+
         fleet.fleetSize = fleet.vehicles.length;
-        
+
         await fleet.save();
         res.redirect('/fleetsize');
     } catch (error) {
@@ -71,25 +90,31 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Add this new route after your existing routes
+/**
+ * @api {delete} /:plateNumber Remove Vehicle from Fleet
+ * @apiName RemoveVehicle
+ * @apiGroup Fleet
+ *
+ * @apiParam {String} plateNumber The plate number of the vehicle to remove.
+ *
+ * @apiSuccess {String} redirect Redirection URL after successful deletion.
+ * @apiError {String} error Error message if deletion fails.
+ */
 router.delete('/:plateNumber', async (req, res) => {
     try {
         const tempUserId = '65f3c5d1e214e123456789ab';
         const plateNumber = req.params.plateNumber;
-        
-        // Find the fleet
+
         const fleet = await Fleet.findOne({ userId: tempUserId });
-        
+
         if (!fleet) {
             return res.status(404).send('Fleet not found');
         }
-        
-        // Remove the vehicle with matching plate number
+
         fleet.vehicles = fleet.vehicles.filter(vehicle => vehicle.plateNumber !== plateNumber);
-        
-        // Update fleet size
+
         fleet.fleetSize = fleet.vehicles.length;
-        
+
         await fleet.save();
         res.redirect('/fleetsize');
     } catch (error) {

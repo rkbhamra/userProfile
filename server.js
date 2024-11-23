@@ -32,6 +32,7 @@ app.use(
       saveUninitialized: true,
   })
 );
+app.use("/apidoc", express.static("public/apidoc"));
 
 app.use('/purchasePref', purchaseRouter);
 app.use('/', indexRouter);
