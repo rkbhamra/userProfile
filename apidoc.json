@@ -1,0 +1,11 @@
+{
+    "name": "Fleet Rewards API",
+    "version": "1.0.0",
+    "description": "API Documentation for Fleet Rewards",
+    "title": "Fleet Rewards API Docs",
+    "url": "https://fleetrewards.onrender.com",
+    "sampleUrl": "https://fleetrewards.onrender.com",
+    "template": {
+      "forceLanguage": "en"
+    }
+  }

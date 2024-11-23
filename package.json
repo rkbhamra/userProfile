@@ -20,6 +20,7 @@
     "mongoose": "^8.8.0"
   },
   "devDependencies": {
+    "apidoc": "^1.2.0",
     "dotenv": "^16.4.5",
     "nodemon": "^3.1.7"
   }
